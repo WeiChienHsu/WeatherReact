@@ -152,7 +152,43 @@ export default connect(null, mapDispatchToProps)(SearchBar);
 
 
 
-## ForcastList
+## WeatherList
+- Render the List of Weather Data from Weather Reducer
+- Connect Reducer with WeatherList Component
+- Used the structure of table tags in HTML
+```js
+<table className = "table table-hober">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Temperature</th>
+        <th>Pressure</th>
+        <th>Humidity</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+```
+#### States in Redux
+![State](./image/demo4.png)
+
+- RenderWeather function
+```js
+  renderWeather(cityData){
+    return(
+      <tr key = {cityData.city.id} >
+        <td>{cityData.city.name}</td>
+      </tr>  
+    );
+  }
+```
+
+### React Sparklines
+[React Sparklines](http://borisyankov.github.io/react-sparklines/)
+
+
 
 ## Chart
 
