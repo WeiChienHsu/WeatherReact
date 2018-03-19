@@ -9,6 +9,25 @@
 api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 ```
 
+## Ajax Request on Redux (Middleware)
+![Middleware](./image/demo1.png)
+
+#### Middleware is a DoorKeeper
+Middleware is our functions that take an action. Dependin on the actions type and payload(or other values), the Middleware cound let the action pass through, manipulate the action, console.log it or stop it all together befroe actions reach any Reducer.
+
+#### Redux Promise
+[Redux-promise](https://www.npmjs.com/package/redux-promise)
+
+- applyMiddleware
+```js
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise'
+
+
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+```
+
+
 ## Components
 ### Search Bar
 Container: Need to have the ability to modify the state of our application by depatching action right and to call all action creator needs to say like hey someone just enter the search term, we need to call a API request.
