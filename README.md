@@ -1,25 +1,53 @@
-# ReduxSimpleStarter
+# Weather React App
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
-### Getting Started
+## Open Weather Map API
+[free API](https://openweathermap.org/api)
 
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
+- API call:
 ```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
+api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 ```
 
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+## Components
+### Search Bar
+Container: Need to have the ability to modify the state of our application by depatching action right and to call all action creator needs to say like hey someone just enter the search term, we need to call a API request.
 
+#### onChange Event
+- Event Handler : onImputChange(event)
+- Need a component State to record the current Input term
+- Initize the input term with ''
+```js
+  onInputChange(event){
+    console.log(event.target.value);
+    this.setState({ term: event.target.value });
+  }
+
+<input
+    placeholder = " Get a five-days forecast in your favorite cities"
+    className = "form-control"
+    value = {this.state.term}
+    onChange = {this.onInputChange}
+    />
 ```
-> npm install
-> npm start
+
+#### onSubimt Event
+- Prevent Browser to automatically submit the from 
+```js
+  onFormSubmit(event){
+      event.preventDefault();
+  }
 ```
+
+#### Bind This
+- Handle the Error of 'this', Since when we write " conChange = {this.onInputChagne} ", the call back function onInputChange reference to a 'this' and the callback function doesn't know what "this" means. The 'this' is not going to be our search component. 
+```
+Uncaught TypeError: Cannot read property 'setState' of undefined
+```
+```js
+this.onInputChange = this.onInputChange.bind(this);
+```
+
+#### ForcastList
+
+#### Chart
