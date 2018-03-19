@@ -234,7 +234,4 @@ npm install --save-dev babel-plugin-css-modules-transform
 }
 ```
 
-
-
-
 ***
