@@ -27,6 +27,32 @@ import ReduxPromise from 'redux-promise'
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 ```
 
+### Action: API Request to fetch Weather API Data
+- new funtion to fetch weather: In order to avoid others' typo or changes, we give a type of action not just a Strgin
+- We will import this type in the reducer as well
+```js
+export const FETCH_WEATHER = 'FETCH_WEATHER';
+```
+
+- Template String
+```js
+const ROOT_URL = `http://samples.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+```
+#### axios :Library for asking Ajax Request
+[axios](https://www.npmjs.com/package/axios)
+- Will Return a Promise 
+```js
+  const request = axios.get(url);
+
+  return {
+    type: FETCH_WEATHER,
+    payload: request
+};
+```
+
+
+
+
 
 ## Components
 ### Search Bar
