@@ -14,6 +14,8 @@ api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 ## Ajax Request on Redux (Middleware)
 ![Middleware](./image/demo1.png)
 
+The Ajax request is asynchronous in nature. Normally, we have to pass a callback to it or we have to do with a promise or something like that. Redux-Promise is to help simply our codes.
+
 #### Middleware is a DoorKeeper
 Middleware is our functions that take an action. Dependin on the actions type and payload(or other values), the Middleware cound let the action pass through, manipulate the action, console.log it or stop it all together befroe actions reach any Reducer.
 
@@ -73,8 +75,16 @@ Redux-Promise: sees this incoming action and it looks at specifically the payloa
 
 
 ## Reducer to handle WeatherFetch
-
-
+- Get the data from action.payload.data, since only the data here are useful for us
+- Save the weather data into Array
+- We don't ever manipulate state directly and that's what's happening
+```js
+return state.push(action.payload.data)
+```
+- Instead of changing the Attay(state), we would like to return completely new State
+```js
+return state.concat([action.payload.data]);
+```
 
 ***
 
