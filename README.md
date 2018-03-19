@@ -2,12 +2,14 @@
 
 
 ## Open Weather Map API
-[free API](https://openweathermap.org/api)
+![free API](https://openweathermap.org/api)
 
 - API call:
 ```
 api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 ```
+
+# Action Creator
 
 ## Ajax Request on Redux (Middleware)
 ![Middleware](./image/demo1.png)
@@ -16,6 +18,10 @@ api.openweathermap.org/data/2.5/forecast?q={city name},{country code}
 Middleware is our functions that take an action. Dependin on the actions type and payload(or other values), the Middleware cound let the action pass through, manipulate the action, console.log it or stop it all together befroe actions reach any Reducer.
 
 #### Redux Promise
+
+Work Flow
+![demo3](./image/demo3.png)
+
 [Redux-promise](https://www.npmjs.com/package/redux-promise)
 
 - applyMiddleware
@@ -49,10 +55,28 @@ const ROOT_URL = `http://samples.openweathermap.org/data/2.5/forecast?appid=${AP
     payload: request
 };
 ```
+***
+
+# Reducer 
+- User Enter the search term they submit the form that calls the action creator(fetchWeather) and pass in the city. With the url, make an Ajax request with axio.
+- Axio returns a Promise (which is a data structure that doesn't actually contain any of request data) But it return the Promise as 'payload'
+
+### Promise and Results
+![demo](./image/demo2.png)
+
+#### We got a Request from Action Creator 
+It's a Promise and we return it as payload
+
+#### Instead of getting a payload from Reducer, we directly get the results data(Redux-promise unwarps the problem for us)
+
+Redux-Promise: sees this incoming action and it looks at specifically the payload property. If paylaod is a Promise, redux-promise stop action and care about it! Once the request finishes it dispatches a new action of the same type but with a payload of the resolved request.
+
+
+## Reducer to handle WeatherFetch
 
 
 
-
+***
 
 # Components
 ## Search Bar
@@ -121,3 +145,5 @@ export default connect(null, mapDispatchToProps)(SearchBar);
 ## ForcastList
 
 ## Chart
+
+***
