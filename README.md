@@ -184,12 +184,28 @@ export default connect(null, mapDispatchToProps)(SearchBar);
     );
   }
 ```
+#### Render the list of different temp
+- map the list and go through each data inside the main, the out put will be an array of numbers(temps)
+
+```js
+const temps = cityData.list.map(weather => weather.main.temp)
+```
 
 ### React Sparklines
 [React Sparklines](http://borisyankov.github.io/react-sparklines/)
 
+- Aviod Depuliacte, need to refactor our chart as a reusable component.
+```js
+<td>
+  <Sparklines height = {120} width = {180} data = {temps}>
+    <SparklinesLine color = "red"/>
+  </Sparklines>
+</td>
+```
+
+## Chart (Component)
+- Always get the data from WeatherList
 
 
-## Chart
 
 ***
