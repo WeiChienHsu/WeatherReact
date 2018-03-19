@@ -54,8 +54,8 @@ const ROOT_URL = `http://samples.openweathermap.org/data/2.5/forecast?appid=${AP
 
 
 
-## Components
-### Search Bar
+# Components
+## Search Bar
 Container: Need to have the ability to modify the state of our application by depatching action right and to call all action creator needs to say like hey someone just enter the search term, we need to call a API request.
 
 #### onChange Event
@@ -89,10 +89,35 @@ Container: Need to have the ability to modify the state of our application by de
 ```
 Uncaught TypeError: Cannot read property 'setState' of undefined
 ```
+- Always bind the function when we use a callback function on our DOM
 ```js
 this.onInputChange = this.onInputChange.bind(this);
 ```
 
-#### ForcastList
+### Connect Commponent to action creator
+- Bind the action creator "fetchWeather()" as a property to this container as we've done
+```js
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index'
 
-#### Chart
+```
+- BindActionCreators
+```js
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchWeather}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
+```
+- Fetch the Weather Data by current State(term)
+```js
+  this.props.fetchWeather(this.state.term);
+  this.setState({ term: '' })
+```
+
+
+
+## ForcastList
+
+## Chart
