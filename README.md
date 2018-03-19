@@ -204,7 +204,36 @@ const temps = cityData.list.map(weather => weather.main.temp)
 ```
 
 ## Chart (Component)
-- Always get the data from WeatherList
+- Always get the data from WeatherList so it won't connect with Redux
+- Not need to be a Class, since it won't have it's own behaviors
+```js
+// WeatherList
+<td>
+  <Chart data = {temps} color = "blue" />
+</td>
+
+// Chart
+
+<div>
+  <Sparklines svgHeight={80} svgWidth={140} data = {props.data}>
+      <SparklinesLine color = {props.color}/>
+  </Sparklines>
+</div>
+
+```
+
+## How to connect with CSS within babel
+- install babel-plugin-css-modules-transform and add plugins option to .babelrc file
+
+```
+npm install --save-dev babel-plugin-css-modules-transform
+```
+```js
+{
+    "plugins": ["css-modules-transform"]
+}
+```
+
 
 
 
