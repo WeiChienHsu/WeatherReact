@@ -250,3 +250,17 @@ npm install --save-dev babel-plugin-css-modules-transform
     });
   }
 ```
+- Import in WeatherList and Render GoogleMap in the Page(sending lat and lon data into GoogleMap)
+```js
+const { lon, lat } = cityData.city.coord;
+
+    <td><GoogleMap lon = {lon} lat = {lat}  /></td>
+```
+- Add a Css Sytle
+
+```js
+td:first-of-type, td:first-of-type > div {
+  height: 140px;
+  width: 200px;
+}
+```
