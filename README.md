@@ -235,3 +235,18 @@ npm install --save-dev babel-plugin-css-modules-transform
 ```
 
 ***
+
+## Map Component
+- Refer to google.map (Third party Library)
+- Intergrate with Thrid Party Libraires
+```js
+  componentDidMount() {
+    new google.map.Map(this.refs.map, {
+      zoom: 12,
+      center: {
+        lat: this.props.lat,
+        lng: this.props.lon
+      }
+    });
+  }
+```
